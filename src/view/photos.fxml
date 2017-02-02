@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="photoalbum.controller.PhotoController">
+   <children>
+      <HBox alignment="CENTER" prefWidth="200.0">
+         <children>
+            <Pane fx:id="albumPane">
+               <children>
+                  <Label fx:id="userLabel" alignment="TOP_LEFT" layoutY="5.0" text="username" />
+                  <Button fx:id="albumsButton" layoutX="66.0" mnemonicParsing="false" onMouseClicked="#toAlbums" text="Albums" />
+                  <Button fx:id="logoutButton" alignment="BOTTOM_LEFT" layoutX="133.0" mnemonicParsing="false" onMouseClicked="#logout" text="Logout" />
+                  <Pane layoutX="196.0" />
+                  <Button fx:id="addButton" layoutX="300.0" mnemonicParsing="false" onMouseClicked="#addPhoto" text="Add..." />
+               </children>
+            </Pane>
+            <Pane fx:id="searchPane" />
+            <ChoiceBox fx:id="viewChooser" value="thumbnail view">
+            	<String fx:value="thumbnail view" />
+            	<String fx:value="slideshow view" />
+            </ChoiceBox>
+            <Pane fx:id="searchPane" minWidth="-Infinity" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <HBox fx:id="slideshowBox" alignment="CENTER" VBox.vgrow="NEVER">
+         <children>
+            <Button fx:id="backwardButton" alignment="CENTER" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#backwardClicked" text="&lt;-" HBox.hgrow="ALWAYS" />
+            <StackPane fx:id="slideshowPane" maxHeight="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+               <children>
+                  <ImageView fx:id="slideshowView" fitHeight="150.0" onMouseClicked="#photoClicked" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </StackPane>
+            <Button fx:id="forwardButton" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#forwardClicked" text="-&gt;" />
+         </children>
+      </HBox>
+      <ListView fx:id="thumbnailView" onMouseClicked="#photoClicked" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+         <contextMenu>
+            <ContextMenu fx:id="photoContextMenu">
+              <items>
+                <MenuItem fx:id="editButton" mnemonicParsing="false" onAction="#editPhoto" text="Edit" />
+                  <MenuItem fx:id="deletePhotoButton" mnemonicParsing="false" onAction="#deletePhoto" text="Delete this photo" />
+              </items>
+            </ContextMenu>
+         </contextMenu></ListView>
+   </children>
+</VBox>
